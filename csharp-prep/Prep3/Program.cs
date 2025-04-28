@@ -10,13 +10,12 @@ class Program
         {
             Random randomNumber = new Random();
             int m = randomNumber.Next(1,50);
-            
+
             //A variable to increment while inside the loops
             int counter = 1;
 
             Console.Write("What is your guess? ");
-            string guess = Console.ReadLine();
-            int g = int.Parse(guess);
+            int g = int.Parse(Console.ReadLine());
 
             while (g != m)
             {
@@ -24,17 +23,14 @@ class Program
                 {
                     Console.WriteLine("Lower");
                     Console.Write("What is your guess? ");
-                    string newGuess = Console.ReadLine();
-                    g = int.Parse(newGuess);
+                    g = int.Parse(Console.ReadLine());
                     counter ++;
-
                 }
                 else 
                 {
                     Console.WriteLine("Higher");
                     Console.Write("What is your guess? ");
-                    string newGuess = Console.ReadLine();
-                    g = int.Parse(newGuess);
+                    g = int.Parse(Console.ReadLine());
                     counter ++;
                 }
             }
