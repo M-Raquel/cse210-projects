@@ -4,14 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
-        //A variable to increment while inside the loops
-        int counter = 1;
         // To see if the user wants to play again
         string playAgain = "no";
         do 
         {
             Random randomNumber = new Random();
             int m = randomNumber.Next(1,50);
+            
+            //A variable to increment while inside the loops
+            int counter = 1;
 
             Console.Write("What is your guess? ");
             string guess = Console.ReadLine();
