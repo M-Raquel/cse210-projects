@@ -47,7 +47,6 @@ public class Reflection : Activity
     //Method to show random questions/prompts
     public void Reflect(int duration)
     {
-        int i = 0;
         int count = 0;
 
         DateTime startTime = DateTime.Now;
@@ -58,9 +57,8 @@ public class Reflection : Activity
         while (DateTime.Now < endTime)
         {
             Console.Write(RandomQuestion());
-            ShowAnimation();
+            Countdown();
             Console.WriteLine(""); // Add a new line for the question
-            i++;
             count++;
         }
         End("Reflection", duration);

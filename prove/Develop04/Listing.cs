@@ -34,7 +34,7 @@ public class Listing : Activity
         DateTime endTime = startTime.AddSeconds(duration);
 
         Console.Write(RandomList());
-        ShowAnimation();
+        Countdown();
         Console.WriteLine(" Start wrtiting!");
 
         while (DateTime.Now < endTime)

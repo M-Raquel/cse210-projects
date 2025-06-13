@@ -4,7 +4,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to the Mindfulness Program.\nIt was designed to help someone relax.");
+        Console.WriteLine("Welcome to the Mindfulness Program.");
 
         string startInput;
 
@@ -38,6 +38,7 @@ class Program
                 Console.Clear();
 
                 breathCount++;
+
             }
             if (startInput == "2")
             {
@@ -46,7 +47,7 @@ class Program
                 reflect1.Start("Reflection", "help you reflect on times in your life when you have shown strength and resilience. This will help you recognize the power you have and how you can use it in other aspects of your life.");
 
                 reflect1.Reflect(reflect1.GetDuration(5));
-                Thread.Sleep(2000); //Time to see the End message
+                reflect1.ShowAnimation();
                 Console.Clear();
 
                 reflectCount++;
@@ -59,8 +60,9 @@ class Program
                 list1.Start("Listing", "help you reflect on the good things in your life by having you list as many things as you can in a certain area.");
 
                 list1.List(list1.GetDuration(5));
-                Thread.Sleep(2000);
+                list1.ShowAnimation();
                 Console.Clear();
+
                 listCount++;
 
             }
@@ -70,6 +72,7 @@ class Program
             }
 
         } while (startInput != "4");
+        
         //A log of how many times activities were performed
         int total = breathCount + listCount + reflectCount;
         Console.WriteLine($"You did a total of {total} activities. \n{breathCount} going through breathing exercises, {reflectCount} times reflecting on life, and {listCount} going through listing items. \nHope you have a good rest of your day!");
