@@ -72,7 +72,7 @@ public class Activity
 
             Console.Write(i);
             Thread.Sleep(1000);
-            Console.Write("\b\b");
+            Console.Write("\b \b");
         }
         Console.WriteLine(""); //For a new line in terminal
     }
@@ -80,8 +80,7 @@ public class Activity
     //Method for displaying the animation
     public void ShowAnimation()
     {
-        List<string> animationStrings = new List<string>{"|", "/", "-", "\\",
-            "|", "/", "-", "\\", "|", "/", "-", "\\"};
+        List<string> animationStrings = new List<string>{"|", "/", "-", "\\"};
 
         int i = 0;
 
