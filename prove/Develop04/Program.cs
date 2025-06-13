@@ -66,6 +66,10 @@ class Program
                 listCount++;
 
             }
+            if (startInput == "4")
+            {
+                break;
+            }
             else
             {
                 Console.WriteLine("Invalid input, try again");
@@ -75,6 +79,14 @@ class Program
         
         //A log of how many times activities were performed
         int total = breathCount + listCount + reflectCount;
-        Console.WriteLine($"You did a total of {total} activities. \n{breathCount} going through breathing exercises, {reflectCount} times reflecting on life, and {listCount} going through listing items. \nHope you have a good rest of your day!");
+
+        if (total == 0)
+        {
+            Console.WriteLine($"You did a total of {total} activities. \nYou should try something next time :) \nBye!");
+        }
+        else
+        {
+            Console.WriteLine($"You did a total of {total} activities. \n{breathCount} going through breathing exercises, {reflectCount} times reflecting on life, and {listCount} going through listing items. \nHope you have a good rest of your day!");  
+        }
     }
 }

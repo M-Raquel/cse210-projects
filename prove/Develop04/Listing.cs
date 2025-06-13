@@ -33,7 +33,7 @@ public class Listing : Activity
         DateTime startTime = DateTime.Now;
         DateTime endTime = startTime.AddSeconds(duration);
 
-        Console.Write(RandomList());
+        Console.WriteLine(RandomList());
         Countdown();
         Console.WriteLine(" Start wrtiting!");
 

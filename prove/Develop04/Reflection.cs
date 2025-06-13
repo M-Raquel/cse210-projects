@@ -56,7 +56,7 @@ public class Reflection : Activity
 
         while (DateTime.Now < endTime)
         {
-            Console.Write(RandomQuestion());
+            Console.WriteLine(RandomQuestion());
             Countdown();
             Console.WriteLine(""); // Add a new line for the question
             count++;
