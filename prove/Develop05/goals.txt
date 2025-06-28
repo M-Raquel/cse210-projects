@@ -1,0 +1,4 @@
+0
+SimpleGoal| Do Hw| Finish everything by Saturday|10|False
+EternalGoal| LDM| Read the book of Mormon daily|20
+ChecklistGoal| Spiritual post| share a scripture online for a week|15|20|3|0|False
