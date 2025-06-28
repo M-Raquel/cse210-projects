@@ -10,13 +10,13 @@ class Program
         //Makes a list to store the Goal objects into
         ManageGoals manageGoals = new ManageGoals();
 
-        string userInput = "0"; //To start the do-while loop
+        bool userInput = true; //To start the do-while loop
 
-        do
+        while (userInput)
         {
             // Display total points
             Console.WriteLine("~~~~~~~ Goal Quest ~~~~~~~");
-            Console.WriteLine($"Total Points: {manageGoals.ShowScore}\n");
+            manageGoals.ShowScore();
 
             //Menu Options
             Console.WriteLine("Menu Options: \n");
@@ -27,10 +27,10 @@ class Program
             Console.WriteLine("5. Record an Event");
             Console.WriteLine("6. Quit");
 
-            userInput = Console.ReadLine();
+            string userChoice = Console.ReadLine();
             Console.WriteLine();
 
-            switch (userInput)
+            switch (userChoice)
             {
                 case "1": //Create a new goal
                     AddGoal(manageGoals);
@@ -62,6 +62,7 @@ class Program
                     break;
 
                 case "6":
+                    userInput = false;
                     Console.WriteLine("Thanks for playing!");
                     break;
                 default:
@@ -70,7 +71,7 @@ class Program
             }
             
 
-        } while (userInput != "6");
+        }
     }
     
     //Method to add create new goals 
