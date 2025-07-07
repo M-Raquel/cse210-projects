@@ -1,0 +1,114 @@
+<diagram program="umletino" version="15.1"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>250</x><y>40</y><w>210</w><h>230</h></coordinates><panel_attributes>&lt;&lt;Exercise&gt;&gt;
+Abstract Class
+--
+# _name : string
+# _description : string
+# _time : int
+# _setAmount : int
+--
+Methods
+Constructor: Exercise
+*-- SetTime()*
+*-- SetAmount()*
+*-- StringRepresentation()*
+*-- SetFileFormat()*
+*-- Random()*
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>20</x><y>340</y><w>230</w><h>240</h></coordinates><panel_attributes>&lt;&lt;Cardio&gt;&gt;
+Child of Exercise
+--
+- List&lt;string&gt; Cardio
+- _distance : int
+- _speed : int
+- _pace : int
+--
+Methods
+Constructor: Cardio
+
+*+ Override SetTime()*
+*+ Override SetAmount(int distance, pace, speed)*
+*+ Override StringRepresentation()*
+*+ Override SetFileFormat()*
+*+ Random()*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>150</x><y>260</y><w>120</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>100;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>260</x><y>340</y><w>220</w><h>240</h></coordinates><panel_attributes>&lt;&lt;Core&gt;&gt;
+Child of Exercise
+--
+- List&lt;string&gt; Core
+--
+Methods
+Constructor: Core
+
+*+ Override SetTime()*
+*+ Override SetAmount(int distance, pace, speed)*
+*+ Override StringRepresentation()*
+*+ Override SetFileFormat()*
+*+ Random()*</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>500</x><y>330</y><w>210</w><h>260</h></coordinates><panel_attributes>&lt;&lt;Strength&gt;&gt;
+Child of Exercise
+--
+- List&lt;string&gt; Upper
+- List&lt;string&gt; Lower
+- _weight : int
+--
+Methods
+Constructor: Strength
+
+*+ UpperBody()*
+*+ LowerBody()*
+*+ FullBody()*
+*+ Override SetTime()*
+*+ Override SetAmount()*
+*+ Override StringRepresentation()*
+*+ Override SetFileFormat()*
+*+ Random()*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>340</x><y>260</y><w>40</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;20;80</additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>260</y><w>180</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;160;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>0</y><w>210</w><h>280</h></coordinates><panel_attributes>&lt;&lt;Program&gt;&gt;
+--
+Menu()
+CreateExercise() : Exercise
+--
+Responsibilities
+-- Displays the menu and gives the
+user several options to choose from.
+Will include 
+1. Start (exercise set of that day)
+2. Create Regime
+	a. Random choice or Personal
+	b. Day by Day focus?
+	c. Choose at least 2 exercises
+		d. Set duration/set/weigt etc.
+3. Load Data (Load an exercise Regime) 
+4. Save (Save chosen set to a file)
+5. Schedule (see weekly schedule
+6. Quit</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>490</x><y>30</y><w>210</w><h>180</h></coordinates><panel_attributes>&lt;&lt;User Data&gt;&gt;
+--
+-- _List&lt;Exercise&gt; ExerciseList
+--
++ Save() : string
++ Load() : string
++ Display() : string
++ AddExercise() --add exercise to list
+--
+Responsibilities
+-- Responsible for Saving, Loading
+and Displaying User preferences
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>20</y><w>210</w><h>190</h></coordinates><panel_attributes>&lt;&lt;Date&gt;&gt;
+--
+-- _time : dateTime
+--List&lt;List&lt;T&gt;&gt; weekDays
+--
++ Display()
++ AddList()
++ Save()
++ Load()
+--
+Responsibilities
+-- Keeps track of which exercises for 
+which day of the week. </panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>720</x><y>330</y><w>210</w><h>200</h></coordinates><panel_attributes>&lt;&lt;Flexibility&gt;&gt;
+Child of Exercise
+--
+- List&lt;string&gt; Stretches
+--
+Methods
+Constructor: Flexibility
+
+*+ Override SetTime()*
+*+ Override SetAmount()*
+*+ Override StringRepresentation()*
+*+ Override SetFileFormat()*
+*+ Random()*</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>450</x><y>240</y><w>400</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;306;15;380;90</additional_attributes></element></diagram>
