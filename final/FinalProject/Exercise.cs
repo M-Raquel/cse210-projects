@@ -1,0 +1,41 @@
+//Abstract Class for Exercise Objects
+using System.Data;
+
+public abstract class Exercise
+{
+    //Attributes
+    protected string _name;
+    protected string _description;
+    protected int _time;
+    protected int _setAmount;
+
+    protected bool _setOrTime;
+
+    //Constructor
+    public Exercise(string name, string description, int time, int setAmount)
+    {
+        _name = name;
+        _description = description;
+        _time = time;
+        _setAmount = setAmount;
+    }
+
+    //Methods
+
+    //Method to return the length of an activity in minutes.
+    public abstract int SetTime();
+
+    //Method to return the set of a particular exercise - how many times do you want to do this?
+    public abstract int SetAmount();
+
+    //Method to return how a specific exercise will look in string format when printed. 
+    //The setOrTime is used to seperate if the use chose to go by time duration or a set amount of an exercise.
+    //If time/duration, then the bool is true.
+    public abstract string StringRepresentation(bool setOrTime);
+
+    //Method to return how the exercise will be sent to a file. 
+    public abstract string SetFileFormat();
+
+    //Method to randomly choose an exercise from a list. 
+    public abstract string Random();
+}
