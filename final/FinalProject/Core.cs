@@ -1,4 +1,6 @@
 // Child class of Exercise - Contains list of core exercises. 
+using System.Runtime.CompilerServices;
+
 public class Core : Exercise
 {
     //Attributes
@@ -51,13 +53,13 @@ public class Core : Exercise
 
     public override string SetFileFormat()
     {
-        
+        return "";
     }
 
 
     public override string Random()
     {
-        
+        return "";
     }
 
 

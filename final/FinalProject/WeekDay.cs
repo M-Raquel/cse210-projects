@@ -1,0 +1,1 @@
+// Class to keep track of which exercises are in which days of the week
