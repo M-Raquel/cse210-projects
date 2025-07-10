@@ -7,12 +7,12 @@ public abstract class Exercise
     protected string _name;
     protected string _description;
     protected int _time;
-    protected int _setAmount;
+    protected List<int> _setAmount; // Contains list of set and repetitions
 
     protected bool _setOrTime;
 
     //Constructor
-    public Exercise(string name, string description, int time, int setAmount)
+    public Exercise(string name, string description, int time, List<int> setAmount)
     {
         _name = name;
         _description = description;
@@ -25,8 +25,8 @@ public abstract class Exercise
     //Method to return the length of an activity in minutes.
     public abstract int SetTime();
 
-    //Method to return the set of a particular exercise - how many times do you want to do this?
-    public abstract int SetAmount();
+    //Method to return the amount of a particular exercise - how many repetitions and sets?
+    public abstract List<int> SetAmount();
 
     //Method to return how a specific exercise will look in string format when printed. 
     //The setOrTime is used to seperate if the use chose to go by time duration or a set amount of an exercise.

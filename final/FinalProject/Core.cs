@@ -9,9 +9,9 @@ public class Core : Exercise
 
 
     //Constructor
-    public Core(string name, string description, int time, int setAmount) : base(name, description, time, setAmount)
+    public Core(string name, string description, int time, List<int> setAmount) : base(name, description, time, setAmount)
     {
-
+        // Leave empty
     }
 
     //Methods
@@ -25,16 +25,22 @@ public class Core : Exercise
         return minutes;
     }
 
-    public override int SetAmount() 
+    public override List<int> SetAmount() 
     {
         _setOrTime = false;
-        Console.Write("Enter how many sets of times you would like to do this exercise: ");
+        Console.Write("Enter how many repetitions you would like to do for this exercise: ");
+        int repetition = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Enter how many sets of the exercise you would like to do");
         int set = int.Parse(Console.ReadLine());
 
-        return set;
+        List<int> amount = [set, repetition];
+
+        return amount;
     }
 
 
+    //Runs if the user chooses to make the list themselves.
     public override string StringRepresentation(bool setOrTime)
     {
         string representation;
@@ -44,7 +50,7 @@ public class Core : Exercise
         }
         else
         {
-            representation = $"{_name} : {_description}; {_setAmount} times ";
+            representation = $"{_name} : {_description}; {_setAmount[0]} sets of {_setAmount[1]} repetitions. ";
         }
 
         return representation;
@@ -56,11 +62,25 @@ public class Core : Exercise
         return "";
     }
 
-
+    // Choose two random exercises to add to list - then add some repetitions and sets
     public override string Random()
     {
-        return "";
+        Random randomCore = new();
+        int coreIndex1 = randomCore.Next(_coreExercises.Count);
+        int coreIndex2;
+
+        do
+        {
+            coreIndex2 = randomCore.Next(_coreExercises.Count);
+        } while (coreIndex1 == coreIndex2);
+
+        // Set the repetition and set
+        int set = 3;
+        int repetition = 10;
+
+        List<int> amount = [set, repetition];
+        _setOrTime = false; //To get correct String representation later
+
+        return $"";
     }
-
-
 }
