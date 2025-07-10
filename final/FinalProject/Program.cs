@@ -40,7 +40,8 @@ class Program
                     if (randomOrCustom == '1')
                     {
                         Console.WriteLine("Perfect! Let's create something.\nPlease select what you would like to focus on for Monday: ");
-                        string exerciseChoice = Console.ReadLine();
+                        
+
 
                         // Change this later to call the Create Exercise method in User data to set everything up. 
                     }
