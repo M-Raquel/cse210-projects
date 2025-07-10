@@ -1,4 +1,5 @@
 // Child class of Exercise - Contains list of core exercises. 
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 public class Core : Exercise
@@ -16,11 +17,21 @@ public class Core : Exercise
 
     //Methods
 
+    //Method to Display the coreExercises
+    public void DisplayCore()
+    {
+        foreach (string i in _coreExercises)
+        {
+            Console.WriteLine(i);
+        }
+    }
+
     public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
     {
         _setOrTime = true;
         Console.Write("Enter how long, in minutes, you would like to do this exercise: ");
         int minutes = int.Parse(Console.ReadLine());
+        _time = minutes;
 
         return minutes;
     }
@@ -41,7 +52,7 @@ public class Core : Exercise
 
 
     //Runs if the user chooses to make the list themselves.
-    public override string StringRepresentation(bool setOrTime)
+    public override string StringRepresentation()
     {
         string representation;
         if (_setOrTime)
@@ -59,7 +70,16 @@ public class Core : Exercise
 
     public override string SetFileFormat()
     {
-        return "";
+        string format;
+        if (_setOrTime)
+        {
+            format = $"Core| {_name}| {_description}| {_time} minutes";
+        }
+        else
+        {
+            format = $"Core| {_name}| {_description}| {_setAmount}";
+        }
+        return format;
     }
 
     // Choose two random exercises to add to list - then add some repetitions and sets
