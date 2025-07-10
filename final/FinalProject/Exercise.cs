@@ -31,7 +31,7 @@ public abstract class Exercise
     //Method to return how a specific exercise will look in string format when printed. 
     //The setOrTime is used to seperate if the use chose to go by time duration or a set amount of an exercise.
     //If time/duration, then the bool is true.
-    public abstract string StringRepresentation(bool setOrTime);
+    public abstract string StringRepresentation();
 
     //Method to return how the exercise will be sent to a file. 
     public abstract string SetFileFormat();
