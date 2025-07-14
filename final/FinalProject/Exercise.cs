@@ -11,13 +11,20 @@ public abstract class Exercise
 
     protected bool _setOrTime;
 
-    //Constructor
-    public Exercise(string name, string description, int time, List<int> setAmount)
+    //Constructor for if the user wants sets with repetitions
+    public Exercise(string name, string description, List<int> setAmount)
+    {
+        _name = name;
+        _description = description;
+        _setAmount = setAmount;
+    }
+
+    //2nd Constructor for if the user wants to do timed exercises
+    public Exercise(string name, string description, int time)
     {
         _name = name;
         _description = description;
         _time = time;
-        _setAmount = setAmount;
     }
 
     //Methods

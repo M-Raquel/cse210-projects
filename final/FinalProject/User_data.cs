@@ -1,4 +1,5 @@
 //Class to keep track of user data - Saving and Loading to a file
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 public class UserData
@@ -61,14 +62,27 @@ public class UserData
             string[] parts = lines[i].Split("|");
             string type = parts[0];
 
-            if (type == "Core")
+            if (type == "CoreB")
             {
-                // $"Core| {_name}| {_description}| {_setAmount}"
+                // $"Core| {_name}| {_description}| {_setAmount[0]}| {_setAmount[1]}"
                 string name = parts[1];
                 string description = parts[2];
-                List<int> setAmount = parts[3];
+                int sets = int.Parse(parts[3]);
+                int repetitions = int.Parse(parts[4]);
+
+                List<int> setAmount = [sets, repetitions];
 
                 Core c = new Core(name, description, setAmount);
+                _userExercises.Add(c);
+            }
+            if (type == "CoreA")
+            {
+                //$"CoreA| {_name}| {_description}| {_time} minutes";
+                string name = parts[1];
+                string description = parts[2];
+                int time = int.Parse(parts[3]);
+
+                Core c = new Core(name, description, time);
                 _userExercises.Add(c);
             }
             //Add for Cardio and Everything else

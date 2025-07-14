@@ -9,11 +9,18 @@ public class Core : Exercise
     "Plank", "Leg Raises", "Bicycle Crunch", "V-Ups", "Lying Windshield Wipers", "Ab Rollouts", "Hollow Body Hold"];
 
 
-    //Constructor
-    public Core(string name, string description, int time, List<int> setAmount) : base(name, description, time, setAmount)
+    //Constructor for SetAmount only
+    public Core(string name, string description, List<int> setAmount) : base(name, description, setAmount)
     {
         // Leave empty
     }
+
+    //Constructor for SetTime
+    public Core(string name, string description, int time) : base(name, description, time)
+    {
+        //Leave empty
+    }
+    
 
     //Methods
 
@@ -73,11 +80,11 @@ public class Core : Exercise
         string format;
         if (_setOrTime)
         {
-            format = $"Core| {_name}| {_description}| {_time} minutes";
+            format = $"CoreA| {_name}| {_description}| {_time} minutes";
         }
         else
         {
-            format = $"Core| {_name}| {_description}| {_setAmount}";
+            format = $"CoreB| {_name}| {_description}| {_setAmount[0]}|{_setAmount[1]}";
         }
         return format;
     }
