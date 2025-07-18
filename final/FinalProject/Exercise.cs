@@ -25,8 +25,14 @@ public abstract class Exercise
         _name = name;
         _description = description;
         _time = time;
+        _setAmount = new List<int>();
     }
 
+    //3rd Constructor to call lists from a specific class.
+    public Exercise()
+    {
+        //
+    }
     //Methods
 
     //Method to return the length of an activity in minutes.
