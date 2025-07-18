@@ -9,15 +9,14 @@ class Program
         // Testing if Exercise object works and the Core class
         Console.WriteLine("Welcome to the Better Health Systems! We will help you create an exercise regime");
 
-        List<Exercise> recordedExercises = new List<Exercise>();
         Thread.Sleep(2000);
 
-        UserData newUser = new UserData("Raquel", 21, 118, recordedExercises);
+        UserData newUser = new UserData("Raquel", 21, 118);
+        // Create a new Date class to save the exercises to and call those methods.
+        Date weekSchedule = new Date();
+
         newUser.DisplayUserInfo();
-
-
-        //Change this later to ask the user themselves
-        // 
+        Thread.Sleep(2000);
 
         bool userInput = true; //To start the do-while loop
 
@@ -29,29 +28,31 @@ class Program
             Console.WriteLine("Menu Options: \n");
             Console.WriteLine("1. Start Exercises of the Day");
             Console.WriteLine("2. Create a Weekly Schedule");
-            Console.WriteLine("3. Save to File");
-            Console.WriteLine("4. Load");
+            Console.WriteLine("3. Save Weekly Schedule");
+            Console.WriteLine("4. Load Weekly Schedule");
             Console.WriteLine("5. See Schedule");
-            Console.WriteLine("6. Quit");
+            Console.WriteLine("6. Generate Random Weekly Schedule");
+            Console.WriteLine("7. Quit");
 
             //Call the method at the bottom to check input
-            string userChoice = GetValidInput("Please choose an option (1-6): ", new List<string> {"1", "2", "3", "4", "5", "6"});
+            string userChoice = GetValidInput("Please choose an option (1-7): ", new List<string> {"1", "2", "3", "4", "5", "6", "7"});
             Console.WriteLine();
 
             switch (userChoice)
             {
                 case "1":
-                    // Pull from WeekDay class to display the lists that are there for the day of the week on the user's system
-                    //Delete following code later. 
-                    newUser.DisplayExercises();
+                    // Pull from WeekDay class to display the lists that are there for the day of the week on the user's system 
+                    Console.WriteLine("Here are your exercises for today: ");
+                    weekSchedule.GetTodaySchedule();
+                    weekSchedule.DisplayTodaySchedule();
                     Thread.Sleep(3000);
 
                     break;
                 case "2":
                     // To check if the there is valid input
                     string planType = GetValidInput("1. Personal Customization\n2. Randomly Generated", new List<string> { "1", "2" });
-                    //If Personal, Have a day by day focus that is saved to a list.
-                    // That list is saved to user data (user class), which is then saved to a specific week day (Date class).
+                    //If Personal, ask user to save a day by day focus to a list.
+                    // That list is saved to a week list (Date class)
                     // Make the user choose at least 2 exercises; check against list index of exercises?
                     // Set duration/set/weight of each individual exercise
                     // Display an option for the user to Save if they wish.
@@ -70,7 +71,7 @@ class Program
 
                         Thread.Sleep(2000);
 
-                        string SR = GetValidInput("Do you want to do it based on time or sets/repetitions? [ t / r ]", new List<string> {"t", "r"});
+                        string SR = GetValidInput("Do you want to do it based on time or sets/repetitions? [ t / r ]", new List<string> { "t", "r" });
 
                         if (SR.ToLower() == "t")
                         {
@@ -78,45 +79,78 @@ class Program
                             int time = SetCore.SetTime();
 
                             Core exercise1 = new Core(name, description, time);
-                            newUser.AddExercise(exercise1);
+
+                            //Add to a Specific Day of User choice
+                            string chosenDay = GetValidInput(
+                                "Which day would you like to add this to? (e.g., Monday, Tuesday...)",
+                                new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }
+                            );
+                            weekSchedule.AddExerciseToDay(chosenDay, exercise1);
+                            Console.WriteLine($"Added to {chosenDay}.");
 
                             exercise1.StringRepresentation();
                             Thread.Sleep(2000);
                         }
                         else
                         {
+                            // To use the SetAmount method found in Core
                             Core SetCore = new Core();
                             List<int> setAmount = SetCore.SetAmount();
 
                             Core exercise1 = new Core(name, description, setAmount);
-                            newUser.AddExercise(exercise1);
+                            string chosenDay = GetValidInput(
+                                "Which day would you like to add this to? (e.g., Monday, Tuesday...)",
+                                new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }
+                            );
+                            weekSchedule.AddExerciseToDay(chosenDay, exercise1);
+                            Console.WriteLine($"Added to {chosenDay}.");
+
                             exercise1.StringRepresentation();
                             Thread.Sleep(2000);
                         }
                     }
                     else
                     {
-                        Exercise exercise1 = new Core();
-                        exercise1.Random();
-                        newUser.AddExercise(exercise1);
-                        Thread.Sleep(2000);
+                        Exercise randomCore = new Core();
                         //Put random Core, Cardio, Strength, and Flexibility generations into a list
+                        randomCore.Random();
+                        weekSchedule.AddExerciseToDay("Monday", randomCore);
+
+                        Console.WriteLine($"Added '{randomCore.StringRepresentation()}");
+                        Thread.Sleep(2000);
                         break;
                     }
 
                     break;
                 case "3":
-                    // Call the user data class to manage saving the file.
+                    // Call the date class to manage saving the file.
+                    weekSchedule.SaveWeekSchedule("week_schedule.txt");
+                    Console.WriteLine("Your current weekly plan is now saved.");
+                    Thread.Sleep(2000);
                     break;
                 case "4":
-                    //Call the user data class to load from a file.
+                    //Call the date class to load from a file.
+                    weekSchedule.LoadWeekSchedule("week_schedule.txt");
+                    Console.WriteLine("Your schedule has been loaded!");
+                    Thread.Sleep(2000);
                     break;
                 case "5":
-                // Call the Date class to display the Lists for each day of the week
+                    // Call the date class to display the Lists for each day of the week
+                    string viewDay = GetValidInput("Which day would you like to view? (e.g., Monday, Tuesday...)", new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
+
+                    weekSchedule.DisplayDaySchedule(viewDay);
+                    Thread.Sleep(2000);
+                    break;
+
                 case "6":
+                    // Calls the date class to randomly generate entire weekly schedule
+                    weekSchedule.GenerateRandomWeek();
+                    break;
+
+                case "7":
                     userInput = false;
                     Console.WriteLine("Have a good rest of your day!");
-                    break;
+                    break;       
             }
         }
     }
