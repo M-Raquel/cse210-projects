@@ -8,19 +8,23 @@ public class Core : Exercise
     private List<string> _coreExercises = ["Mountain Climbers", "Russian Twist", "Side Plank", "Abdominal Crunch",
     "Plank", "Leg Raises", "Bicycle Crunch", "V-Ups", "Lying Windshield Wipers", "Ab Rollouts", "Hollow Body Hold"];
 
-
     //Constructor for SetAmount only
     public Core(string name, string description, List<int> setAmount) : base(name, description, setAmount)
     {
-        // Leave empty
+        _setAmount = new List<int>();
     }
 
     //Constructor for SetTime
     public Core(string name, string description, int time) : base(name, description, time)
     {
-        //Leave empty
+        //Leave blank
     }
-    
+
+    //A blank constructor to call the list
+    public Core()
+    {
+        // Leave empty
+    }
 
     //Methods
 
@@ -53,7 +57,7 @@ public class Core : Exercise
         int set = int.Parse(Console.ReadLine());
 
         List<int> amount = [set, repetition];
-
+        _setAmount = amount;
         return amount;
     }
 
@@ -62,15 +66,22 @@ public class Core : Exercise
     public override string StringRepresentation()
     {
         string representation;
+        
         if (_setOrTime)
         {
             representation = $"{_name} : {_description}; {_time} minutes ";
         }
         else
         {
-            representation = $"{_name} : {_description}; {_setAmount[0]} sets of {_setAmount[1]} repetitions. ";
+            if (_setAmount != null && _setAmount.Count >= 2)
+            {
+                representation = $"{_name} : {_description}; {_setAmount[0]} sets of {_setAmount[1]} repetitions.";
+            }
+            else
+            {
+                representation = $"{_name} : {_description}; (Repetition data unavailable)";
+            }
         }
-
         return representation;
     }
 
@@ -80,11 +91,18 @@ public class Core : Exercise
         string format;
         if (_setOrTime)
         {
-            format = $"CoreA| {_name}| {_description}| {_time} minutes";
+            format = $"CoreA| {_name}| {_description}| {_time}";
         }
         else
         {
-            format = $"CoreB| {_name}| {_description}| {_setAmount[0]}|{_setAmount[1]}";
+            if (_setAmount != null && _setAmount.Count >= 2)
+            {
+                format = $"CoreB| {_name}| {_description}| {_setAmount[0]}|{_setAmount[1]}";
+            }
+            else
+            {
+                format = $"CoreB| {_name}| {_description}| (Missing set/repetition data)";
+            }
         }
         return format;
     }
@@ -104,10 +122,14 @@ public class Core : Exercise
         // Set the repetition and set
         int set = 3;
         int repetition = 10;
-
-        List<int> amount = [set, repetition];
         _setOrTime = false; //To get correct String representation later
 
-        return $"";
+        _setAmount = new List<int> { set, repetition };
+        string exercise1 = _coreExercises[coreIndex1];
+        string exercise2 = _coreExercises[coreIndex2];
+        _name = $"{exercise1} & {exercise2}";
+        _description = "Core-strengthening duo selected randomly.";
+        
+        return StringRepresentation();
     }
 }
