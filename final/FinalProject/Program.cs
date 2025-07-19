@@ -37,7 +37,7 @@ class Program
             Console.WriteLine("8. Save Schedule to File");
             Console.WriteLine("9. Load Schedule from File");
             Console.WriteLine("0. Quit");
-            Console.Write("Choose an option");
+            Console.Write("Choose an option - ");
 
             string userChoice = Console.ReadLine();
             Console.WriteLine();
@@ -53,42 +53,57 @@ class Program
                     // Display Exercises for the day
                     // Call the Week class and pull from the list tied to a specific day
                     weekSchedule.DisplayTodaySchedule();
+                    Thread.Sleep(3000);
                     break;
                 case "2":
                     // Display the Schedule for a Specific Day
                     Console.Write("Enter day to view (Monday, Tuesday, etc. ): ");
                     string day = Console.ReadLine();
                     weekSchedule.DisplayDaySchedule(day);
+                    Thread.Sleep(3000);
+
                     break;
                 case "3":
                     // Add A Core Exercise - Call Date method ChooseDay to get a specific day inside the AddExerciseToDay method.
                     // Then call the UserData-Create Core Exercise method. Rinse and repeat for the following exercises
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateCoreExercise());
+                    Console.WriteLine("Exercise successfully added");
+                    Thread.Sleep(2000);
+
                     break;
                 case "4":
                     // Add A Cardio Exercise
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateCardioExercise());
-
+                    Console.WriteLine("Exercise successfully added");
+                    Thread.Sleep(2000);
                     break;
                 case "5":
                     // Add a Stretch Exercise
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateStretchExercise());
+                    Console.WriteLine("Exercise successfully added");
+                    Thread.Sleep(2000);
 
                     break;
                 case "6":
                     // Add a Strength Exercise
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateStrengthExercise());
+                    Console.WriteLine("Exercise successfully added");
+                    Thread.Sleep(2000);
 
                     break;
                 case "7":
                     // Generate Random Weekly Schedule
                     weekSchedule.GenerateRandomWeek();
+                    Console.WriteLine("Exercise Regime successfully created");
+                    Thread.Sleep(2000);
                     break;
                 case "8":
                     // Save Schedule to file
                     Console.Write("Enter filename to save: ");
                     string saveFile = Console.ReadLine();
                     weekSchedule.SaveWeekSchedule(saveFile);
+                    Console.WriteLine("File saved");
+                    Thread.Sleep(2000);
                     break;
                 case "9":
                     // Load Schedule from file
