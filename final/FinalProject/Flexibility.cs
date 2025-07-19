@@ -1,1 +1,0 @@
-//Child class of Exercise
