@@ -6,7 +6,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Testing if Exercise object works and the Core class
         Console.WriteLine("Welcome to the Better Health Systems! We will help you create an exercise regime");
 
         Thread.Sleep(2000);
@@ -22,17 +21,24 @@ class Program
 
         while (userInput)
         {
+            Console.Clear();
             Console.WriteLine("~~~~~~~ Better Health ~~~~~~~");
 
             //Menu Options
             Console.WriteLine("Menu Options: \n");
-            Console.WriteLine("1. Start Exercises of the Day");
-            Console.WriteLine("2. Create a Weekly Schedule");
-            Console.WriteLine("3. Save Weekly Schedule");
-            Console.WriteLine("4. Load Weekly Schedule");
-            Console.WriteLine("5. See Schedule");
-            Console.WriteLine("6. Generate Random Weekly Schedule");
-            Console.WriteLine("7. Quit");
+
+            Console.WriteLine("1. Display Exercises of the day");
+            Console.WriteLine("2. Display Schedule for a specific day");
+            Console.WriteLine("3. Add Core Exercise");
+            Console.WriteLine("4. Add Cardio Exercise");
+            Console.WriteLine("5. Add Flexibility Exercise");
+            Console.WriteLine("6. Add Strength Exercise");
+            Console.WriteLine("7. Generate Random Weekly Schedule");
+            Console.WriteLine("8. Save Schedule to File");
+            Console.WriteLine("9. Load Schedule from File");
+            Console.WriteLine("0. Quit");
+            Console.Write("Choose an option");
+
 
             //Call the method at the bottom to check input
             string userChoice = GetValidInput("Please choose an option (1-7): ", new List<string> {"1", "2", "3", "4", "5", "6", "7"});
@@ -40,6 +46,11 @@ class Program
 
             switch (userChoice)
             {
+                    //If Personal, ask user to save a day by day focus to a list.
+                    // That list is saved to a week list (Date class)
+                    // Make the user choose at least 2 exercises; check against list index of exercises?
+                    // Set duration/set/weight of each individual exercise
+                    // Display an option for the user to Save if they wish.
                 case "1":
                     // Pull from WeekDay class to display the lists that are there for the day of the week on the user's system 
                     Console.WriteLine("Here are your exercises for today: ");
@@ -51,73 +62,9 @@ class Program
                 case "2":
                     // To check if the there is valid input
                     string planType = GetValidInput("1. Personal Customization\n2. Randomly Generated", new List<string> { "1", "2" });
-                    //If Personal, ask user to save a day by day focus to a list.
-                    // That list is saved to a week list (Date class)
-                    // Make the user choose at least 2 exercises; check against list index of exercises?
-                    // Set duration/set/weight of each individual exercise
-                    // Display an option for the user to Save if they wish.
 
                     if (planType == "1")
                     {
-                        Console.WriteLine("Perfect! Let's create something.\nPlease list what you would like to focus on for Monday: ");
-                        // Change this later to call the Create Exercise method in User data to set everything up. 
-                        Console.WriteLine("Write the name of an exercise you'd like to do. "); // Show a method to Display the list of exercises
-                        string name = Console.ReadLine();
-
-                        Thread.Sleep(2000);
-
-                        Console.WriteLine("Give a short description of what this strengthens/improves");
-                        string description = Console.ReadLine();
-
-                        Thread.Sleep(2000);
-
-                        string SR = GetValidInput("Do you want to do it based on time or sets/repetitions? [ t / r ]", new List<string> { "t", "r" });
-
-                        if (SR.ToLower() == "t")
-                        {
-                            Core SetCore = new Core();
-                            int time = SetCore.SetTime();
-
-                            Core exercise1 = new Core(name, description, time);
-
-                            //Add to a Specific Day of User choice
-                            string chosenDay = GetValidInput(
-                                "Which day would you like to add this to? (e.g., Monday, Tuesday...)",
-                                new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }
-                            );
-                            weekSchedule.AddExerciseToDay(chosenDay, exercise1);
-                            Console.WriteLine($"Added to {chosenDay}.");
-
-                            exercise1.StringRepresentation();
-                            Thread.Sleep(2000);
-                        }
-                        else
-                        {
-                            // To use the SetAmount method found in Core
-                            Core SetCore = new Core();
-                            List<int> setAmount = SetCore.SetAmount();
-
-                            Core exercise1 = new Core(name, description, setAmount);
-                            string chosenDay = GetValidInput(
-                                "Which day would you like to add this to? (e.g., Monday, Tuesday...)",
-                                new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }
-                            );
-                            weekSchedule.AddExerciseToDay(chosenDay, exercise1);
-                            Console.WriteLine($"Added to {chosenDay}.");
-
-                            exercise1.StringRepresentation();
-                            Thread.Sleep(2000);
-                        }
-                    }
-                    else
-                    {
-                        Exercise randomCore = new Core();
-                        //Put random Core, Cardio, Strength, and Flexibility generations into a list
-                        randomCore.Random();
-                        weekSchedule.AddExerciseToDay("Monday", randomCore);
-
-                        Console.WriteLine($"Added '{randomCore.StringRepresentation()}");
-                        Thread.Sleep(2000);
                         break;
                     }
 
