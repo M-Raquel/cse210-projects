@@ -23,6 +23,12 @@ public class Date
 
     //Methods
 
+    //Method for User to choose which day to do the exercise
+    public static string ChooseDay()
+    {
+        Console.Write("Enter the day to schedule the exercise (e.g., Tuesday): ");
+        return Console.ReadLine();
+    }
     //Method to add exercise to a specific day
     public void AddExerciseToDay(string day, Exercise exercise)
     {
@@ -217,13 +223,10 @@ public class Date
             // Random Strength
             Exercise e4 = new Strength(); e4.Random();
 
-
             _weeklySchedule[day].Add(e1);
             _weeklySchedule[day].Add(e2);
             _weeklySchedule[day].Add(e3);
             _weeklySchedule[day].Add(e4);
-
-
         }
     }
 
