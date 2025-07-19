@@ -39,8 +39,6 @@ class Program
             Console.WriteLine("0. Quit");
             Console.Write("Choose an option");
 
-
-
             string userChoice = Console.ReadLine();
             Console.WriteLine();
 
@@ -53,30 +51,50 @@ class Program
                 // Display an option for the user to Save if they wish.
                 case "1":
                     // Display Exercises for the day
+                    // Call the Week class and pull from the list tied to a specific day
+                    weekSchedule.DisplayTodaySchedule();
                     break;
                 case "2":
                     // Display the Schedule for a Specific Day
+                    Console.Write("Enter day to view (Monday, Tuesday, etc. ): ");
+                    string day = Console.ReadLine();
+                    weekSchedule.DisplayDaySchedule(day);
                     break;
                 case "3":
-                    // Add A Core Exercise
+                    // Add A Core Exercise - Call Date method ChooseDay to get a specific day inside the AddExerciseToDay method.
+                    // Then call the UserData-Create Core Exercise method. Rinse and repeat for the following exercises
+                    weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateCoreExercise());
                     break;
                 case "4":
                     // Add A Cardio Exercise
+                    weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateCardioExercise());
+
                     break;
                 case "5":
                     // Add a Stretch Exercise
+                    weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateStretchExercise());
+
                     break;
                 case "6":
                     // Add a Strength Exercise
+                    weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateStrengthExercise());
+
                     break;
                 case "7":
                     // Generate Random Weekly Schedule
+                    weekSchedule.GenerateRandomWeek();
                     break;
                 case "8":
                     // Save Schedule to file
+                    Console.Write("Enter filename to save: ");
+                    string saveFile = Console.ReadLine();
+                    weekSchedule.SaveWeekSchedule(saveFile);
                     break;
                 case "9":
                     // Load Schedule from file
+                    Console.Write("Enter filename to load: ");
+                    string loadFile = Console.ReadLine();
+                    weekSchedule.LoadWeekSchedule(loadFile);
                     break;
                 case "0":
                     // End the program
