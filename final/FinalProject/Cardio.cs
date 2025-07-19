@@ -21,22 +21,13 @@ public class Cardio : Exercise
         //Leave blank
     }
 
-    //A blank constructor to call the list
+    //A blank constructor to call the list in Date method
     public Cardio()
     {
         // Leave empty
     }
 
     //Methods
-
-    //Method to Display the cardioExercises
-    public void DisplayCardio()
-    {
-        foreach (string i in _cardioExercises)
-        {
-            Console.WriteLine(i);
-        }
-    }
 
     public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
     {

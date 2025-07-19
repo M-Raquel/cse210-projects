@@ -66,31 +66,13 @@ public class Strength : Exercise
         //Leave blank
     }
 
-    //A blank constructor to call the list
+    //A blank constructor to call the list in Date method
     public Strength()
     {
         // Leave empty
     }
 
     //Methods
-
-    //Method to Display Upper Body List
-    public void DisplayUpperStrength()
-    {
-        Console.WriteLine("UpperBody exercises");
-        foreach (string i in _upperBodyStrengthExercises)
-        {
-            Console.WriteLine(i);
-        }
-    }
-
-    //Method to display Lower Body List
-    public void DisplayLowerStrength() {
-        Console.WriteLine("Upper Body Strength exercises");
-        foreach (string i in _lowerBodyStrengthExercises) {
-            Console.WriteLine(i);
-        }
-    }
 
     public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
     {

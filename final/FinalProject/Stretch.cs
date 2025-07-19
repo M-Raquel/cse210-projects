@@ -33,7 +33,7 @@ public class Stretch : Exercise
         //Leave blank
     }
 
-    //A blank constructor to call the list
+    //A blank constructor to call the list in Date method
     public Stretch()
     {
         // Leave empty
@@ -41,14 +41,6 @@ public class Stretch : Exercise
 
     //Methods
 
-    //Method to Display the coreExercises
-    public void DisplayFlexibility()
-    {
-        foreach (string i in _stretchExercises)
-        {
-            Console.WriteLine(i);
-        }
-    }
 
     public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
     {

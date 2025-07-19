@@ -20,22 +20,13 @@ public class Core : Exercise
         //Leave blank
     }
 
-    //A blank constructor to call the list
+    //A blank constructor to call the list in Date method
     public Core()
     {
         // Leave empty
     }
 
     //Methods
-
-    //Method to Display the coreExercises
-    public void DisplayCore()
-    {
-        foreach (string i in _coreExercises)
-        {
-            Console.WriteLine(i);
-        }
-    }
 
     public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
     {
