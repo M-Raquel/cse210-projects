@@ -7,9 +7,9 @@ public abstract class Exercise
     protected string _name;
     protected string _description;
     protected int _time;
-    protected List<int> _setAmount; // Contains list of set and repetitions
+    protected List<int> _setAmount; // Contains list of set and repetitions, also weight with the Strength class
 
-    protected bool _setOrTime;
+    protected bool _setOrTime; // To check and get the correct String representation
 
     //Constructor for if the user wants sets with repetitions
     public Exercise(string name, string description, List<int> setAmount)
@@ -33,6 +33,7 @@ public abstract class Exercise
     {
         //
     }
+    
     //Methods
 
     //Method to return the length of an activity in minutes.

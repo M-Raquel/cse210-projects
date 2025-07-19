@@ -12,7 +12,7 @@ public class Cardio : Exercise
     //Constructor for SetAmount only
     public Cardio(string name, string description, List<int> setAmount) : base(name, description, setAmount)
     {
-
+        //Leave blank for now.
     }
 
     //Constructor for SetTime
@@ -29,7 +29,8 @@ public class Cardio : Exercise
 
     //Methods
 
-    public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
+    // Override method to set the time for an individual exercise
+    public override int SetTime()
     {
         _setOrTime = true;
         Console.Write("Enter how long, in minutes, you would like to do this exercise: ");
@@ -39,7 +40,8 @@ public class Cardio : Exercise
         return minutes;
     }
 
-    public override List<int> SetAmount() 
+    // Overide method to set the amounts, aka many repetitions in a set.
+    public override List<int> SetAmount()
     {
         _setOrTime = false;
         Console.Write("Enter how many repetitions you would like to do for this exercise: ");
@@ -77,7 +79,7 @@ public class Cardio : Exercise
         return representation;
     }
 
-
+    // Method to set the format of how it's saved to a file. 
     public override string SetFileFormat()
     {
         string format;

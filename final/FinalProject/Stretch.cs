@@ -2,6 +2,7 @@
 public class Stretch : Exercise
 {
     //Attributes
+    // List of Exercises
     private List<string> _stretchExercises = ["Neck Stretch",
     "Shoulder Cross-Body Stretch",
     "Triceps Stretch",
@@ -24,7 +25,7 @@ public class Stretch : Exercise
     //Constructor for SetAmount only
     public Stretch(string name, string description, List<int> setAmount) : base(name, description, setAmount)
     {
-
+        // Leave empty
     }
 
     //Constructor for SetTime
@@ -52,7 +53,8 @@ public class Stretch : Exercise
         return minutes;
     }
 
-    public override List<int> SetAmount() 
+    // Method to Set the reps and sets
+    public override List<int> SetAmount()
     {
         _setOrTime = false;
         Console.Write("Enter how many repetitions you would like to do for this exercise: ");
@@ -90,7 +92,7 @@ public class Stretch : Exercise
         return representation;
     }
 
-
+    // Method to set how the data is saved to a file.
     public override string SetFileFormat()
     {
         string format;

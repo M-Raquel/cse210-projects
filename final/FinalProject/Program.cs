@@ -10,7 +10,11 @@ class Program
 
         Thread.Sleep(2000);
 
+        // In the future, I want to add a seperate file that keeps track of user information or even have different users
+        // that the data is saved to. For now I'll just fill in the information myself.
+
         UserData newUser = new UserData("Raquel", 21, 118);
+
         // Create a new Date class to save the exercises to and call those methods.
         Date weekSchedule = new Date();
 
@@ -46,23 +50,25 @@ class Program
             {
                 //If Personal, ask user to save a day by day focus to a list.
                 // That list is saved to a week list (Date class)
-                // Make the user choose at least 2 exercises; check against list index of exercises?
                 // Set duration/set/weight of each individual exercise
-                // Display an option for the user to Save if they wish.
+                // If they choose to display a specific day, if there's nothing in there, prompt them to add an exercise.
                 case "1":
                     // Display Exercises for the day
-                    // Call the Week class and pull from the list tied to a specific day
+                    // Call the Week class and pull from the key tied to a specific day
                     weekSchedule.DisplayTodaySchedule();
                     Thread.Sleep(3000);
                     break;
+
                 case "2":
                     // Display the Schedule for a Specific Day
                     Console.Write("Enter day to view (Monday, Tuesday, etc. ): ");
                     string day = Console.ReadLine();
+
                     weekSchedule.DisplayDaySchedule(day);
                     Thread.Sleep(3000);
 
                     break;
+
                 case "3":
                     // Add A Core Exercise - Call Date method ChooseDay to get a specific day inside the AddExerciseToDay method.
                     // Then call the UserData-Create Core Exercise method. Rinse and repeat for the following exercises
@@ -71,32 +77,35 @@ class Program
                     Thread.Sleep(2000);
 
                     break;
+
                 case "4":
                     // Add A Cardio Exercise
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateCardioExercise());
                     Console.WriteLine("Exercise successfully added");
                     Thread.Sleep(2000);
                     break;
+
                 case "5":
                     // Add a Stretch Exercise
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateStretchExercise());
                     Console.WriteLine("Exercise successfully added");
                     Thread.Sleep(2000);
-
                     break;
+
                 case "6":
                     // Add a Strength Exercise
                     weekSchedule.AddExerciseToDay(Date.ChooseDay(), UserData.CreateStrengthExercise());
                     Console.WriteLine("Exercise successfully added");
                     Thread.Sleep(2000);
-
                     break;
+
                 case "7":
                     // Generate Random Weekly Schedule
                     weekSchedule.GenerateRandomWeek();
                     Console.WriteLine("Exercise Regime successfully created");
                     Thread.Sleep(2000);
                     break;
+
                 case "8":
                     // Save Schedule to file
                     Console.Write("Enter filename to save: ");
@@ -105,22 +114,24 @@ class Program
                     Console.WriteLine("File saved");
                     Thread.Sleep(2000);
                     break;
+
                 case "9":
                     // Load Schedule from file
                     Console.Write("Enter filename to load: ");
                     string loadFile = Console.ReadLine();
                     weekSchedule.LoadWeekSchedule(loadFile);
                     break;
+
                 case "0":
                     // End the program
-                    // Switch to break the loop
+                    // Switch to false to break the loop
                     userInput = false;
                     break;
                 default:
                     Console.WriteLine("Please enter a valid option.");
                     break;
             }
-            if (userInput)
+            if (userInput) // Waits for the user to enter before continuing the program
             {
                 Console.WriteLine("\nPress Enter to continue ");
                 Console.ReadLine();

@@ -3,6 +3,7 @@
 public class Strength : Exercise
 {
     //Attributes
+    // List of just upper body strength exercises
     private List<string> _upperBodyStrengthExercises = new List<string>
     {
         "Push-Ups",
@@ -26,6 +27,8 @@ public class Strength : Exercise
         "Diamond Push-Ups",
         "Handstand Hold"
     };
+
+    // List of just lower body strength exercises
     private List<string> _lowerBodyStrengthExercises = new List<string>
     {
         "Bodyweight Squats",
@@ -84,7 +87,8 @@ public class Strength : Exercise
         return minutes;
     }
 
-    public override List<int> SetAmount() 
+    // Sets the amount of repetitions, sets, and weight for an exercise
+    public override List<int> SetAmount()
     {
         _setOrTime = false;
         Console.Write("Enter how many repetitions you would like to do for this exercise: ");
@@ -125,7 +129,7 @@ public class Strength : Exercise
         return representation;
     }
 
-
+    // How a Strength class object is saved into a file
     public override string SetFileFormat()
     {
         string format;
@@ -147,7 +151,7 @@ public class Strength : Exercise
         return format;
     }
 
-    // Choose two random exercises to add to list - then add repetitions, sets, weight
+    // Choose four random exercises to add to list, upper and lower body - then add repetitions, sets, weight
     public override string Random()
     {
         Random randomStrength = new();

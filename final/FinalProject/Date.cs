@@ -6,7 +6,7 @@ public class Date
     //Stores the week day, and set of exercises for that day
     private Dictionary<string, List<Exercise>> _weeklySchedule;
 
-    //Constructor - Empty lists
+    //Constructor - Empty lists for each day. The day is the Key
     public Date()
     {
         _weeklySchedule = new Dictionary<string, List<Exercise>>()
@@ -23,13 +23,15 @@ public class Date
 
     //Methods
 
-    //Method for User to choose which day to do the exercise
+    //Method for User to choose which day to do the exercise - Used in menu to fill in for the AddExerciseToDay method.
     public static string ChooseDay()
     {
         Console.Write("Enter the day to schedule the exercise (e.g., Tuesday): ");
         return Console.ReadLine();
     }
-    //Method to add exercise to a specific day
+
+
+    //Method to add exercise to a specific day. Filled in by User input
     public void AddExerciseToDay(string day, Exercise exercise)
     {
         if (_weeklySchedule.ContainsKey(day))
@@ -46,7 +48,7 @@ public class Date
     }
 
 
-    // Method to Display the Schedule for the specific day
+    // Method to Display the Schedule for the specific day - Checks if there are exercises even in the list
     public void DisplayTodaySchedule()
     {
         string today = DateTime.Now.DayOfWeek.ToString();
@@ -60,6 +62,7 @@ public class Date
             DisplayDaySchedule(today);
         }
     }
+
 
     //Displays Exercises for a specific day of user choice
     public void DisplayDaySchedule(string day)
@@ -86,6 +89,7 @@ public class Date
             Console.WriteLine($"Day '{day}' is not recognized in the schedule.");
         }
     }
+
 
     //Method to save the weekly schedule to a file
     public void SaveWeekSchedule(string filename)
@@ -215,14 +219,19 @@ public class Date
         foreach (string day in _weeklySchedule.Keys)
         {
             // Random Core
-            Exercise e1 = new Core(); e1.Random();
+            Exercise e1 = new Core();
+            e1.Random();
             // Random Cardio
-            Exercise e2 = new Cardio(); e2.Random();
+            Exercise e2 = new Cardio();
+            e2.Random();
             // Random Stretch
-            Exercise e3 = new Stretch(); e3.Random();
+            Exercise e3 = new Stretch();
+            e3.Random();
             // Random Strength
-            Exercise e4 = new Strength(); e4.Random();
+            Exercise e4 = new Strength();
+            e4.Random(); 
 
+            // Add to a list for a day
             _weeklySchedule[day].Add(e1);
             _weeklySchedule[day].Add(e2);
             _weeklySchedule[day].Add(e3);

@@ -28,7 +28,7 @@ public class Core : Exercise
 
     //Methods
 
-    public override int SetTime() //Give the option to switch between a set time or set amount in the menu, give the different options
+    public override int SetTime() //Give the option to switch between a set time or set amount in the menu
     {
         _setOrTime = true;
         Console.Write("Enter how long, in minutes, you would like to do this exercise: ");
@@ -38,7 +38,8 @@ public class Core : Exercise
         return minutes;
     }
 
-    public override List<int> SetAmount() 
+    // Method to set the Amount
+    public override List<int> SetAmount()
     {
         _setOrTime = false;
         Console.Write("Enter how many repetitions you would like to do for this exercise: ");
@@ -51,7 +52,6 @@ public class Core : Exercise
         _setAmount = amount;
         return amount;
     }
-
 
     //Runs if the user chooses to make the list themselves.
     public override string StringRepresentation()
@@ -76,7 +76,7 @@ public class Core : Exercise
         return representation;
     }
 
-
+    // Method to set the file format correctly.
     public override string SetFileFormat()
     {
         string format;
